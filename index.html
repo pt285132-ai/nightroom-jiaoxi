@@ -1,0 +1,859 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>礁溪夜室 Night Room</title>
+<meta name="description" content="礁溪夜室 — 宜蘭礁溪的包棟民宿與共享客廳，最多可入住 12 人，Switch、KTV、麻將、Netflix 一應俱全，鄰近礁溪溫泉。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ========= 品牌色與基本設定：改這裡就能換整站風格 ========= */
+  :root {
+    --ink: #23252e;
+    --muted: #6b6c74;
+    --paper: #f5f1ea;
+    --card: #fffdf8;
+    --night: #1d2233;       /* 夜色藍 */
+    --night-2: #2a3048;
+    --accent: #d39a4a;      /* 暖燈琥珀 */
+    --accent-dark: #b47d33;
+    --line: #e3dccf;
+    --serif: "Noto Serif TC", serif;
+    --sans: "Noto Sans TC", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--paper); line-height: 1.8; font-weight: 300; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1120px, 100% - 32px); margin-inline: auto; }
+  section { padding: 110px 0; }
+  .eyebrow { font-size: 13px; letter-spacing: .3em; color: var(--accent-dark); text-transform: uppercase; margin-bottom: 12px; }
+  h2 { font-family: var(--serif); font-size: clamp(28px, 4vw, 40px); font-weight: 600; letter-spacing: .08em; margin-bottom: 24px; }
+  .lead { color: var(--muted); max-width: 640px; }
+  .btn { display: inline-block; padding: 14px 34px; border: 1px solid currentColor; letter-spacing: .2em; font-size: 14px; transition: .3s; cursor: pointer; background: none; font-family: inherit; color: inherit; }
+  .btn.solid { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.solid:hover { background: var(--accent-dark); border-color: var(--accent-dark); }
+  .btn.line { background: #06c755; border-color: #06c755; color: #fff; }
+  .btn.line:hover { background: #05a647; }
+
+  /* 照片：放到 images/ 資料夾即可自動顯示；沒放照片時會顯示漸層色塊 */
+  .photo { background-size: cover; background-position: center; background-color: #3a4058; }
+
+  /* ========= 導覽列 ========= */
+  header { position: fixed; inset: 0 0 auto; z-index: 50; transition: .4s; color: #fff; }
+  header.scrolled { background: rgba(29,34,51,.95); box-shadow: 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(8px); }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 76px; }
+  .logo { font-family: var(--serif); font-size: 22px; letter-spacing: .25em; font-weight: 600; }
+  .logo small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: .35em; opacity: .7; font-weight: 400; margin-top: -4px; }
+  .menu { display: flex; gap: 34px; list-style: none; font-size: 14px; letter-spacing: .15em; }
+  .menu a { position: relative; padding: 4px 0; }
+  .menu a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0; height: 1px; background: var(--accent); transition: .3s; }
+  .menu a:hover::after { width: 100%; }
+  .logo-img { height: 64px; width: auto; display: block; }
+  footer .logo-img { height: 90px; margin-bottom: 16px; }
+  .burger { display: none; background: none; border: 0; color: inherit; font-size: 26px; cursor: pointer; }
+
+  /* ========= 主視覺 ========= */
+  .hero { position: relative; height: 100vh; min-height: 560px; display: grid; place-items: center; text-align: center; color: #fff; padding: 0;
+    background-image: linear-gradient(rgba(20,24,38,.45), rgba(20,24,38,.6)), url("images/hero.jpg"),
+      radial-gradient(circle at 70% 30%, #4a4f6e 0%, transparent 45%), linear-gradient(170deg, #2a3048, #161a28); }
+  .hero .tag { display: inline-block; font-size: 13px; letter-spacing: .3em; border: 1px solid rgba(255,255,255,.4); padding: 4px 16px; margin-bottom: 24px; }
+  .hero h1 { font-family: var(--serif); font-size: clamp(42px, 8vw, 84px); letter-spacing: .3em; font-weight: 600; margin-bottom: 14px; padding-left: .3em; }
+  .hero p { letter-spacing: .2em; font-size: clamp(14px, 2vw, 17px); margin-bottom: 40px; opacity: .9; }
+  .hero .btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .hero .btn:not(.solid):hover { background: #fff; color: var(--ink); }
+  .scroll-hint { position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%); font-size: 11px; letter-spacing: .3em; opacity: .7; }
+  .scroll-hint::after { content: ""; display: block; width: 1px; height: 40px; background: #fff; margin: 10px auto 0; animation: drip 2s infinite; }
+  @keyframes drip { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* ========= 二選一 ========= */
+  .choose { background: var(--night); color: #e9e7e1; padding: 90px 0; }
+  .choose .eyebrow { color: var(--accent); }
+  .choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .choice { display: block; background: var(--night-2); border: 1px solid rgba(211,154,74,.25); transition: .35s; }
+  .choice:hover { transform: translateY(-6px); border-color: var(--accent); }
+  .choice img { width: 100%; aspect-ratio: 3/2; object-fit: cover; display: block; }
+  .choice div { padding: 24px 28px 28px; }
+  .choice h3 { font-family: var(--serif); font-size: 22px; letter-spacing: .12em; color: #fff; margin-bottom: 6px; }
+  .choice p { color: #b9bccb; font-size: 14px; }
+  .choice .go { color: var(--accent); font-size: 14px; letter-spacing: .15em; margin-top: 12px; display: inline-block; }
+  .one-group { margin: 34px auto 0; max-width: 760px; text-align: center; padding: 16px 22px; border: 1px dashed rgba(211,154,74,.55); color: #f1e6d2; font-size: 15px; }
+  .one-group b { color: var(--accent); font-weight: 500; }
+
+  /* ========= 關於 ========= */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-img { aspect-ratio: 4/5; background-image: url("images/about.jpg"), linear-gradient(150deg, #c9a46e, #7b5a34); }
+  .about .lead + .lead { margin-top: 16px; }
+  .stats { display: flex; gap: 44px; margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .stats b { display: block; font-family: var(--serif); font-size: 32px; color: var(--accent-dark); font-weight: 600; }
+  .stats span { font-size: 13px; color: var(--muted); letter-spacing: .1em; }
+
+  /* ========= 房型 ========= */
+  .rooms { background: var(--card); }
+  .head { text-align: center; margin-bottom: 60px; }
+  .head .lead { margin-inline: auto; }
+  .room-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .room { background: var(--paper); transition: .4s; }
+  .room:hover { transform: translateY(-6px); box-shadow: 0 18px 40px rgba(30,30,50,.12); }
+  .room.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.2fr 1fr; background: var(--night); color: #eee; }
+  .room.featured .meta, .room.featured ul { color: #b9bccb; }
+  .room.featured .price { border-color: rgba(255,255,255,.15); color: #b9bccb; }
+  .room.featured .price b { color: var(--accent); }
+  .room .photo { aspect-ratio: 16/10; }
+  .room.featured .photo { aspect-ratio: auto; min-height: 320px; }
+  .room-body { padding: 30px; }
+  .badge { display: inline-block; font-size: 12px; letter-spacing: .15em; background: var(--accent); color: #fff; padding: 2px 10px; margin-bottom: 10px; }
+  .room h3 { font-family: var(--serif); font-size: 21px; letter-spacing: .12em; font-weight: 600; }
+  .room .meta { font-size: 13px; color: var(--muted); margin: 6px 0 14px; letter-spacing: .05em; }
+  .room ul { list-style: none; font-size: 14px; color: var(--muted); }
+  .room li::before { content: "— "; color: var(--accent); }
+  .price { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: baseline; font-size: 13px; color: var(--muted); }
+  .price b { font-family: var(--serif); font-size: 18px; color: var(--ink); font-weight: 600; }
+
+  /* ========= 共享客廳 ========= */
+  .lounge { background: var(--night); color: #e9e7e1; }
+  .lounge .eyebrow { color: var(--accent); }
+  .lounge .lead { color: #b9bccb; }
+  .exp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .exp { text-align: center; padding: 38px 18px; border: 1px solid rgba(255,255,255,.1); background: var(--night-2); }
+  .exp .icon { font-size: 32px; margin-bottom: 12px; }
+  .exp h3 { font-family: var(--serif); font-size: 18px; letter-spacing: .12em; margin-bottom: 8px; font-weight: 600; color: #fff; }
+  .exp p { font-size: 14px; color: #b9bccb; }
+  .amen { margin-top: 50px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+  .amen span { font-size: 13px; letter-spacing: .08em; border: 1px solid rgba(255,255,255,.18); padding: 6px 16px; border-radius: 99px; color: #d6d4cd; }
+
+  .night-banner { width: 100%; display: block; margin-bottom: 8px; border: 1px solid rgba(211,154,74,.3); }
+  .ptable-scroll { overflow-x: auto; }
+  .rooms .price-wrap { margin-top: 50px; color: #e9e7e1; }
+  .rooms .ptable { min-width: 620px; }
+  .rooms .ptable td.room-name { color: #fff; text-align: left; padding-left: 18px; letter-spacing: .05em; }
+  .rooms .ptable td.big b { font-size: 26px; }
+  .spring { margin-top: 30px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12); text-align: center; }
+  .spring h4 { font-family: var(--serif); color: #fff; letter-spacing: .15em; font-size: 18px; margin-bottom: 12px; }
+  .spring .row { display: flex; flex-wrap: wrap; gap: 14px 40px; justify-content: center; color: #d6d4cd; font-size: 15px; }
+  .spring .row b { color: var(--accent); font-family: var(--serif); font-size: 20px; margin-left: 6px; }
+  .plist { display: none; }
+  .plist .pcard { border: 1px solid rgba(255,255,255,.12); padding: 18px 18px 14px; margin-bottom: 14px; }
+  .plist h4 { font-family: var(--serif); color: #fff; font-size: 16px; letter-spacing: .1em; margin-bottom: 2px; }
+  .plist .when { font-size: 12px; color: #9a9db0; margin-bottom: 10px; }
+  .plist .line { display: flex; justify-content: space-between; align-items: baseline; padding: 7px 0; border-top: 1px dashed rgba(255,255,255,.1); font-size: 14px; color: #d6d4cd; }
+  .plist .line b { font-family: var(--serif); color: var(--accent); font-size: 18px; }
+  .lounge-photos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin: 0 0 60px; }
+  .lounge-photos .photo { aspect-ratio: 4/3; }
+  .price-wrap { margin-top: 70px; border: 1px solid rgba(211,154,74,.4); padding: 44px 32px; background: var(--night-2); }
+  .price-wrap h3 { font-family: var(--serif); text-align: center; font-size: 26px; letter-spacing: .15em; color: var(--accent); margin-bottom: 6px; }
+  .price-wrap .sub { text-align: center; color: #b9bccb; font-size: 14px; margin-bottom: 30px; }
+  .ptable { width: 100%; border-collapse: collapse; text-align: center; }
+  .ptable th, .ptable td { border: 1px solid rgba(255,255,255,.12); padding: 16px 10px; }
+  .ptable th { font-family: var(--serif); font-weight: 600; letter-spacing: .1em; color: #fff; }
+  .ptable th small, .ptable td small { display: block; font-family: var(--sans); font-weight: 300; font-size: 12px; color: #9a9db0; }
+  .ptable td b { font-family: var(--serif); font-size: 22px; color: var(--accent); }
+  .ptable td b + b { margin-left: 18px; }
+  .ptable td.slot { color: #fff; letter-spacing: .1em; }
+  .pnotes { display: flex; flex-wrap: wrap; gap: 12px 30px; justify-content: center; margin-top: 26px; font-size: 14px; color: #d6d4cd; }
+  .pnotes b { color: var(--accent); font-weight: 500; }
+  .price-wrap .btn { display: table; margin: 30px auto 0; }
+
+  /* ========= 相簿 ========= */
+  .gallery { padding: 0; }
+  .gal-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 240px; gap: 6px; }
+  .gal-grid .photo:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+  /* ========= 評價 ========= */
+  .reviews { text-align: center; }
+  .scores { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+  .score { background: var(--card); border: 1px solid var(--line); padding: 28px 40px; min-width: 220px; }
+  .score b { display: block; font-family: var(--serif); font-size: 44px; color: var(--accent-dark); line-height: 1.2; }
+  .score span { font-size: 13px; color: var(--muted); letter-spacing: .1em; }
+  .loves { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 760px; margin: 0 auto; }
+  .loves span { background: var(--card); border: 1px solid var(--line); padding: 8px 18px; font-size: 14px; }
+
+  /* ========= 周邊 ========= */
+  .near { background: var(--card); }
+  .near-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .spot { padding: 26px; border-left: 2px solid var(--accent); background: var(--paper); }
+  .spot h3 { font-family: var(--serif); font-size: 18px; letter-spacing: .1em; font-weight: 600; }
+  .spot p { font-size: 14px; color: var(--muted); }
+
+  /* ========= 交通 & 須知 ========= */
+  .access-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start; }
+  .access dt { font-family: var(--serif); font-weight: 600; letter-spacing: .1em; margin-top: 22px; }
+  .access dd { color: var(--muted); font-size: 15px; }
+  .map { width: 100%; aspect-ratio: 4/3; border: 0; }
+  .rules { margin-top: 70px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .rule { background: var(--card); border: 1px solid var(--line); padding: 20px; font-size: 14px; color: var(--muted); }
+  .rule b { display: block; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+
+  /* ========= 訂房 ========= */
+  .booking { background: var(--night); color: #e9e7e1; }
+  .booking .eyebrow { color: var(--accent); }
+  .booking .lead { color: #b9bccb; }
+  .book-ways { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+  label { font-size: 13px; letter-spacing: .1em; color: #b9bccb; display: grid; gap: 6px; }
+  input, select, textarea { font: inherit; font-weight: 400; padding: 11px 13px; border: 1px solid rgba(255,255,255,.15); background: var(--night); color: #fff; outline: none; transition: .2s; width: 100%; color-scheme: dark; }
+  input:focus, select:focus, textarea:focus, .day:focus-visible, .bk-tabs button:focus-visible, .cal-head button:focus-visible { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 1px; }
+  .note { text-align: center; font-size: 13px; color: #9a9db0; margin-top: 24px; }
+
+  /* 預約月曆 */
+  .bk-tabs { display: flex; justify-content: center; margin-bottom: 28px; }
+  .bk-tabs button { font: inherit; font-size: 15px; padding: 12px 30px; background: transparent; color: #b9bccb; border: 1px solid rgba(255,255,255,.2); cursor: pointer; letter-spacing: .15em; transition: .2s; }
+  .bk-tabs button + button { border-left: 0; }
+  .bk-tabs button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .bk-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: 24px; align-items: start; }
+  .cal, .bk-panel { background: var(--night-2); border: 1px solid rgba(255,255,255,.1); padding: 22px; min-width: 0; }
+  .cal-hint { font-size: 14px; color: #f1e6d2; margin-bottom: 14px; min-height: 1.5em; }
+  .cal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .cal-head b { font-family: var(--serif); font-size: 20px; letter-spacing: .1em; color: #fff; font-weight: 600; }
+  .cal-head button { background: none; border: 1px solid rgba(255,255,255,.2); color: #fff; width: 40px; height: 40px; cursor: pointer; font-size: 18px; }
+  .cal-head button:disabled { opacity: .25; cursor: default; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
+  .cal-dow { text-align: center; font-size: 12px; color: #9a9db0; padding: 4px 0; }
+  .day { min-height: 54px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; background: rgba(255,255,255,.05); border: 1px solid transparent; color: #fff; font: inherit; cursor: pointer; padding: 2px; transition: background .15s; }
+  .day .n { font-size: 15px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .day .p { font-size: 11px; line-height: 1.2; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .day:hover:not(:disabled) { border-color: var(--accent); }
+  .day:disabled { cursor: default; background: transparent; color: #4f5470; }
+  .day:disabled .p { color: transparent; }
+  .day.wkend .n { color: #f3c98f; }
+  .day.hol .p { color: #ff9b8a; }
+  .day.booked { background: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 5px, transparent 5px 10px); color: #6d7290; }
+  .day.booked .p { color: #8b90ab; }
+  .day.in { background: rgba(211,154,74,.28); }
+  .day.sel { background: var(--accent); color: #fff; }
+  .day.sel .p, .day.sel .n { color: #fff; }
+  .day.empty { visibility: hidden; }
+  .cal-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 14px; font-size: 12px; color: #9a9db0; }
+  .cal-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; background: var(--c); }
+  .bk-panel { border-color: rgba(211,154,74,.35); display: grid; gap: 14px; }
+  .bk-panel [hidden] { display: none !important; }
+  .bk-fields { display: grid; gap: 14px; }
+  .bk-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .chk { display: flex; align-items: center; gap: 10px; letter-spacing: .05em; cursor: pointer; }
+  .chk input { width: 18px; height: 18px; accent-color: var(--accent); }
+  .bk-sum { border-top: 1px dashed rgba(255,255,255,.15); padding-top: 12px; font-size: 14px; color: #d6d4cd; display: grid; gap: 4px; }
+  .bk-sum .row { display: flex; justify-content: space-between; gap: 12px; }
+  .bk-sum .row span:last-child { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .bk-sum .sub { font-size: 12px; color: #9a9db0; }
+  .bk-total { display: flex; justify-content: space-between; align-items: baseline; border-top: 1px solid rgba(255,255,255,.12); padding-top: 12px; }
+  .bk-total span { font-size: 14px; letter-spacing: .1em; }
+  .bk-total b { font-family: var(--serif); font-size: 30px; color: var(--accent); font-variant-numeric: tabular-nums; }
+  .bk-msg { font-size: 13px; color: #ff9b8a; min-height: 1.2em; }
+  .bk-actions { display: grid; gap: 10px; }
+  .bk-actions .btn { text-align: center; width: 100%; }
+  .btn[aria-disabled="true"] { opacity: .4; pointer-events: none; }
+  .bk-fine { font-size: 12px; color: #9a9db0; line-height: 1.7; }
+
+  /* ========= 頁尾 ========= */
+  footer { background: #12151f; color: #a9abb8; padding: 70px 0 30px; font-size: 14px; }
+  .foot-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+  footer .logo { color: #fff; margin-bottom: 16px; }
+  footer h4 { color: #fff; font-weight: 500; letter-spacing: .2em; margin-bottom: 14px; font-size: 14px; }
+  footer a:hover { color: var(--accent); }
+  .copy { border-top: 1px solid #2a2e3c; margin-top: 50px; padding-top: 24px; font-size: 12px; text-align: center; letter-spacing: .1em; }
+
+  /* ========= 進場動畫 ========= */
+  .reveal { transition: 1s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ========= 手機版 ========= */
+  @media (max-width: 900px) {
+    section { padding: 80px 0; }
+    .about-grid, .access-grid, .choose-grid { grid-template-columns: 1fr; gap: 40px; }
+    .logo-img { height: 44px; }
+    .room-grid, .room.featured { grid-template-columns: 1fr; }
+    .room.featured .photo { min-height: 220px; }
+    .exp-grid, .rules, .lounge-photos { grid-template-columns: 1fr 1fr; }
+    .bk-grid { grid-template-columns: 1fr; }
+    .price-wrap { padding: 32px 14px; }
+    .ptable td b { display: block; font-size: 19px; }
+    .ptable td b + b { margin-left: 0; }
+    .near-grid { grid-template-columns: 1fr; }
+    .gal-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+    .foot-grid { grid-template-columns: 1fr; }
+    .burger { display: block; }
+    .menu { position: fixed; inset: 76px 0 auto; flex-direction: column; gap: 0; background: var(--night); text-align: center; max-height: 0; overflow: hidden; transition: max-height .4s; }
+    .menu.open { max-height: 420px; }
+    .menu li a { display: block; padding: 16px; }
+  }
+  @media (max-width: 560px) {
+    form, .rules { grid-template-columns: 1fr; }
+    .exp-grid { gap: 10px; }
+    .exp { padding: 24px 12px; }
+    .exp .icon { font-size: 26px; margin-bottom: 6px; }
+    .exp h3 { font-size: 15px; letter-spacing: .05em; }
+    .exp p { font-size: 13px; }
+    .rooms .ptable-scroll { display: none; }
+    .cal, .bk-panel { padding: 14px; }
+    .cal-grid { gap: 3px; }
+    .day { min-height: 46px; }
+    .day .n { font-size: 13px; }
+    .day .p { font-size: 10px; }
+    .bk-tabs button { padding: 10px 18px; font-size: 14px; letter-spacing: .08em; }
+    .plist { display: block; }
+    .stats { gap: 28px; }
+  }
+</style>
+
+
+
+<header id="top">
+  <div class="wrap nav">
+    <a href="#" class="logo"><img class="logo-img" src="images/logo.png" alt="礁溪夜室 Night Room"></a>
+    <button class="burger" aria-label="選單">☰</button>
+    <ul class="menu">
+      <li><a href="#about">關於夜室</a></li>
+      <li><a href="#rooms">房型介紹</a></li>
+      <li><a href="#lounge">共享客廳</a></li>
+      <li><a href="#access">交通須知</a></li>
+      <li><a href="#booking">預約訂房</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero photo">
+  <div>
+    <div class="tag">宜蘭 · 礁溪｜每天只接待一組客人</div>
+    <h1>礁溪夜室</h1>
+    <p>包棟民宿・共享客廳｜泡完溫泉，回來繼續玩</p>
+    <div class="btns">
+      <a href="#rooms" class="btn solid">民宿住宿</a>
+      <a href="#lounge" class="btn">共享客廳</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<section class="choose">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Two Ways to Stay</div>
+      <h2>你想怎麼來夜室？</h2>
+    </div>
+    <div class="choose-grid">
+      <a class="choice reveal" href="#rooms">
+        <img src="images/illus-stay.jpg" alt="民宿客人插畫">
+        <div>
+          <h3>民宿客人</h3>
+          <p>包棟過夜，房間、客廳、廚房整棟都是你們的。平日可以只包單一房型，假日一律整棟包棟。</p>
+          <span class="go">看房型與房價 →</span>
+        </div>
+      </a>
+      <a class="choice reveal" href="#lounge">
+        <img src="images/illus-lounge.jpg" alt="共享客廳插畫">
+        <div>
+          <h3>共享客廳</h3>
+          <p>不過夜也能來！按人頭計時，Switch、KTV、麻將、Netflix 盡情玩。</p>
+          <span class="go">看客廳價目表 →</span>
+        </div>
+      </a>
+    </div>
+    <p class="one-group reveal">🌙 夜室同一時段<b>只接待一組客人</b>：有民宿客人入住時，共享客廳不對外開放；共享客廳有預約時，也不接受住宿。</p>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div class="photo about-img reveal"></div>
+    <div class="reveal">
+      <div class="eyebrow">About</div>
+      <h2>一群人一起住，<br>夜晚才正要開始</h2>
+      <p class="lead">礁溪夜室位在宜蘭礁溪白雲村，開車約 4 分鐘就到礁溪溫泉公園。我們<b>每天只接待一組客人</b>，整棟空間都屬於你們，適合全家出遊或三五好友包棟，最多可以住 12 人。</p>
+      <p class="lead">我們把最大的空間留給寬敞明亮的共享客廳。Switch、KTV、麻將、Netflix 都準備好了，白天去泡湯、逛景點，晚上回來繼續聚。門口就能停車，帶小朋友來也很方便。</p>
+      <div class="stats">
+        <div><b>4.8</b><span>Google 評分</span></div>
+        <div><b>9.5</b><span>Booking 評分</span></div>
+        <div><b>12</b><span>人可包棟</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rooms" class="rooms">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Rooms</div>
+      <h2>房型介紹</h2>
+      <p class="lead">每一種房型都是包棟：同一時段只有你們這一組。平日可以依人數選擇樓層和房型，週五到週日和連假則一律整棟包棟。所有房間都有空調、平面電視和免費盥洗用品。</p>
+    </div>
+    <div class="room-grid">
+      <article class="room featured reveal">
+        <div class="photo" style="background-image:url('images/room-house.jpg'),linear-gradient(140deg,#3a4262,#1d2233)"></div>
+        <div class="room-body">
+          <span class="badge">最受歡迎</span>
+          <h3>全開包棟（四間房）</h3>
+          <div class="meta">最多 12 人｜四間房全開｜共享客廳 + 廚房</div>
+          <ul>
+            <li>整棟包下，空間只屬於你們</li>
+            <li>客廳有 Switch、KTV、麻將、Netflix</li>
+            <li>簡易廚房：冰箱、微波爐、電熱水壺</li>
+            <li>附陽台和露台</li>
+          </ul>
+          <div class="price">平日 / 假日起<b>NT$ 11,500 / 13,000</b></div>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="photo" style="background-image:url('images/room-double.jpg'),linear-gradient(140deg,#d8b98a,#a07b4a)"></div>
+        <div class="room-body">
+          <h3>2F 雙人房包棟</h3>
+          <div class="meta">2 人｜1 張加大雙人床｜私人衛浴</div>
+          <ul><li>適合情侶、夫妻</li><li>附沖洗座、吹風機</li></ul>
+          <div class="price">平日（週一～週四）<b>NT$ 2,000</b></div>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="photo" style="background-image:url('images/room-quad.jpg'),linear-gradient(140deg,#9fa8c4,#5f6889)"></div>
+        <div class="room-body">
+          <h3>2F 四人房包棟</h3>
+          <div class="meta">4 人｜2 張加大雙人床｜私人衛浴</div>
+          <ul><li>適合小家庭、好友同行</li><li>附沖洗座、吹風機</li></ul>
+          <div class="price">平日（週一～週四）<b>NT$ 4,000</b></div>
+        </div>
+      </article>
+      <article class="room reveal" style="grid-column:1/-1">
+        <div class="photo" style="background-image:url('images/room-family.jpg'),linear-gradient(140deg,#c9a46e,#7b5a34);aspect-ratio:21/9"></div>
+        <div class="room-body">
+          <h3>3F 家庭房包棟</h3>
+          <div class="meta">6 人｜3 張加大雙人床｜共用衛浴</div>
+          <ul><li>大空間，孩子可以盡情蹦蹦跳跳</li><li>適合三代同堂、多人家庭</li></ul>
+          <div class="price">平日（週一～週四）<b>NT$ 5,500</b></div>
+        </div>
+      </article>
+    </div>
+    <div class="price-wrap reveal">
+      <h3>2027 包棟價目表</h3>
+      <p class="sub">新台幣計價・每晚</p>
+      <div class="ptable-scroll">
+        <table class="ptable">
+          <tr><th>房型</th><th>平日<small>週一～週四</small></th><th>小假日<small>週五、週日</small></th><th>假日<small>週六</small></th><th>連續假日<small>特殊假日</small></th></tr>
+          <tr><td class="room-name">2F 雙人房包棟</td><td><b>2,000</b></td><td rowspan="4" class="big"><b>13,000</b><small>整棟包棟</small></td><td rowspan="4" class="big"><b>14,000</b><small>整棟包棟</small></td><td rowspan="4" class="big"><b>15,000</b><small>整棟包棟</small></td></tr>
+          <tr><td class="room-name">2F 四人房包棟</td><td><b>4,000</b></td></tr>
+          <tr><td class="room-name">3F 家庭房包棟</td><td><b>5,500</b></td></tr>
+          <tr><td class="room-name">全開包棟（四間房）</td><td><b>11,500</b></td></tr>
+          <tr><td class="room-name">增加一人</td><td><b>500</b><small>/ 人</small></td><td><b>800</b><small>/ 人</small></td><td><b>800</b><small>/ 人</small></td><td><b>800</b><small>/ 人</small></td></tr>
+        </table>
+      </div>
+      <div class="plist">
+        <div class="pcard">
+          <h4>平日</h4><div class="when">週一～週四・可選單一房型</div>
+          <div class="line"><span>2F 雙人房包棟</span><b>2,000</b></div>
+          <div class="line"><span>2F 四人房包棟</span><b>4,000</b></div>
+          <div class="line"><span>3F 家庭房包棟</span><b>5,500</b></div>
+          <div class="line"><span>全開包棟（四間房）</span><b>11,500</b></div>
+          <div class="line"><span>增加一人</span><b>500 / 人</b></div>
+        </div>
+        <div class="pcard">
+          <h4>假日・連假</h4><div class="when">一律整棟包棟</div>
+          <div class="line"><span>小假日（週五、週日）</span><b>13,000</b></div>
+          <div class="line"><span>假日（週六）</span><b>14,000</b></div>
+          <div class="line"><span>連續假日・特殊假日</span><b>15,000</b></div>
+          <div class="line"><span>增加一人</span><b>800 / 人</b></div>
+        </div>
+      </div>
+      <div class="spring">
+        <h4>🧧 2027 春節包棟（1～12 人）</h4>
+        <div class="row"><span>住一天<b>21,000</b> / 天</span><span>住兩天<b>20,000</b> / 天</span><span>住三天以上<b>19,000</b> / 天</span></div>
+      </div>
+      <a class="btn line" href="https://lin.ee/mOt0Cro" target="_blank" rel="noopener">LINE 詢問空房</a>
+    </div>
+  </div>
+</section>
+
+<section id="lounge" class="lounge">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Shared Lounge</div>
+      <h2>共享客廳</h2>
+      <p class="lead">專治礁溪深夜無聊！住宿的客人可以使用，不過夜的朋友也能計時包下來玩。住客最常跟我們說「應有盡有」，這裡就是夜室的心臟。</p>
+    </div>
+    <img class="night-banner reveal" src="images/illus-night.jpg" alt="夜室共享客廳插畫">
+    <div class="lounge-photos reveal">
+      <div class="photo" style="background-image:url('images/lounge-switch.jpg')"></div>
+      <div class="photo" style="background-image:url('images/lounge-mahjong.jpg')"></div>
+      <div class="photo" style="background-image:url('images/lounge-ktv.jpg')"></div>
+      <div class="photo" style="background-image:url('images/lounge-guests.jpg')"></div>
+    </div>
+    <div class="exp-grid">
+      <div class="exp reveal"><div class="icon">🎮</div><h3>Switch 電玩</h3><p>多人同樂，大人小孩都能一起玩。</p></div>
+      <div class="exp reveal"><div class="icon">🎤</div><h3>KTV 歡唱</h3><p>不用出門就能唱，請在安靜時段前盡興。</p></div>
+      <div class="exp reveal"><div class="icon">🀄</div><h3>麻將 & 桌遊</h3><p>朋友家人圍一桌，聊天聊到深夜。</p></div>
+      <div class="exp reveal"><div class="icon">📺</div><h3>Netflix 影院</h3><p>大電視追劇看電影，一起窩在沙發上。</p></div>
+      <div class="exp reveal"><div class="icon">📷</div><h3>底片相機租借</h3><p>用底片留下這趟旅程，回憶多一點溫度。</p></div>
+      <div class="exp reveal"><div class="icon">🍳</div><h3>共享廚房</h3><p>冰箱、微波爐、熱水壺，宵夜自己來。</p></div>
+      <div class="exp reveal"><div class="icon">♨️</div><h3>礁溪溫泉</h3><p>開車約 4 分鐘到礁溪溫泉公園。</p></div>
+      <div class="exp reveal"><div class="icon">🚗</div><h3>門口停車</h3><p>免費私人停車位，搬行李不費力。</p></div>
+    </div>
+    <div class="amen reveal">
+      <span>免費高速 WiFi</span><span>空調</span><span>簡易廚房</span><span>冰箱</span><span>微波爐</span><span>電熱水壺</span><span>平面電視</span><span>陽台 / 露台</span><span>免費盥洗用品</span><span>吹風機</span><span>全館禁菸</span>
+    </div>
+    <div class="price-wrap reveal">
+      <h3>共享客廳價目表</h3>
+      <p class="sub">不住宿也能來，按人頭計費</p>
+      <table class="ptable">
+        <tr><th></th><th>平日<small>週一至週四</small></th><th>假日<small>週五至週日</small></th></tr>
+        <tr><td class="slot">☀️ 日間<small>08:00 – 00:00</small></td><td><b>$280</b><small>3 小時 / 人</small><b>$360</b><small>5 小時 / 人</small></td><td><b>$320</b><small>3 小時 / 人</small><b>$400</b><small>5 小時 / 人</small></td></tr>
+        <tr><td class="slot">🌙 夜間<small>00:00 – 08:00</small></td><td><b>$520</b><small>8 小時 / 人</small></td><td><b>$560</b><small>8 小時 / 人</small></td></tr>
+      </table>
+      <div class="pnotes">
+        <span><b>低消</b>　平日 2 位／假日 4 位</span>
+        <span><b>加時</b>　每人 $50 / 小時</span>
+        <span><b>使用廚房</b>　酌收 $200 清潔費（暗黑料理大賽歡迎！）</span>
+      </div>
+      <p class="sub" style="margin:22px 0 0">※ 共享客廳與民宿住宿不同時開放，有住宿客人的時段無法預約共享客廳。</p>
+      <a class="btn line" href="https://lin.ee/mOt0Cro" target="_blank" rel="noopener">LINE 私訊預約</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gal-grid">
+    <div class="photo" style="background-image:url('images/g1.jpg'),linear-gradient(150deg,#3a4262,#1d2233)"></div>
+    <div class="photo" style="background-image:url('images/g2.jpg'),linear-gradient(150deg,#d8b98a,#a07b4a)"></div>
+    <div class="photo" style="background-image:url('images/g3.jpg'),linear-gradient(150deg,#9fa8c4,#5f6889)"></div>
+    <div class="photo" style="background-image:url('images/g4.jpg'),linear-gradient(150deg,#c9a46e,#7b5a34)"></div>
+    <div class="photo" style="background-image:url('images/g5.jpg'),linear-gradient(150deg,#565d7c,#2a3048)"></div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Reviews</div>
+      <h2>住客怎麼說</h2>
+    </div>
+    <div class="scores reveal">
+      <div class="score"><b>4.8</b><span>Google・87 則評論</span></div>
+      <div class="score"><b>9.5</b><span>Booking.com・傑出</span></div>
+      <div class="score"><b>100%</b><span>Facebook 推薦</span></div>
+    </div>
+    <p class="lead reveal" style="margin:0 auto 20px">住客最常提到的是：</p>
+    <div class="loves reveal">
+      <span>客廳寬敞明亮</span><span>娛樂設備應有盡有</span><span>老闆熱情像朋友</span><span>環境乾淨</span><span>門口好停車</span><span>適合包棟、帶小孩</span><span>隔音好</span>
+    </div>
+  </div>
+</section>
+
+<section class="near">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Nearby</div>
+      <h2>周邊景點</h2>
+    </div>
+    <div class="near-grid">
+      <div class="spot reveal"><h3>礁溪溫泉公園</h3><p>森林風呂和泡腳池，車程約 4 分鐘。</p></div>
+      <div class="spot reveal"><h3>湯圍溝溫泉公園</h3><p>免費泡腳，還可以體驗溫泉魚。</p></div>
+      <div class="spot reveal"><h3>五峰旗瀑布</h3><p>三層瀑布，步道輕鬆好走。</p></div>
+      <div class="spot reveal"><h3>林美石磐步道</h3><p>森林溪谷環狀步道，沿途有瀑布。</p></div>
+      <div class="spot reveal"><h3>蘭陽博物館・外澳沙灘</h3><p>看海、衝浪，順便逛特色建築。</p></div>
+      <div class="spot reveal"><h3>頭城老街・羅東夜市</h3><p>老街散步，晚上逛夜市吃宜蘭小吃。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="access" class="access">
+  <div class="wrap">
+    <div class="access-grid">
+      <div class="reveal">
+        <div class="eyebrow">Access</div>
+        <h2>交通位置</h2>
+        <dl>
+          <dt>地址</dt><dd>262 宜蘭縣礁溪鄉白雲村白雲二路 108 巷 3 號</dd>
+          <dt>自行開車</dt><dd>國道 5 號下礁溪交流道後依導航前往，民宿門口有免費私人停車位。</dd>
+          <dt>大眾運輸</dt><dd>搭火車或客運到礁溪站，再轉乘計程車前往。</dd>
+          <dt>入住 / 退房</dt><dd>入住 15:00 – 21:00｜退房 11:00 前<br>請事先告知預計抵達時間。</dd>
+        </dl>
+      </div>
+      <a class="map reveal photo" href="https://www.google.com/maps/search/?api=1&query=%E5%AE%9C%E8%98%AD%E7%B8%A3%E7%A4%81%E6%BA%AA%E9%84%89%E7%99%BD%E9%9B%B2%E4%BA%8C%E8%B7%AF108%E5%B7%B73%E8%99%9F" target="_blank" rel="noopener" style="display:grid;place-items:center;background-image:linear-gradient(rgba(29,34,51,.55),rgba(29,34,51,.55)),url('images/g3.jpg');color:#fff;letter-spacing:.2em;font-size:16px">📍 在 Google 地圖開啟</a>
+    </div>
+    <div class="rules reveal">
+      <div class="rule"><b>💰 付款方式</b>僅收現金，訂房需先轉帳訂金</div>
+      <div class="rule"><b>🌙 安靜時段</b>22:00 – 07:00 請降低音量</div>
+      <div class="rule"><b>🚭 禁菸・禁寵物</b>全館禁菸，不接受攜帶寵物</div>
+      <div class="rule"><b>👶 孩童</b>歡迎各年齡孩童，不提供嬰兒床、加床</div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="eyebrow">Booking</div>
+      <h2>預約訂房</h2>
+      <p class="lead">在月曆上選日期，價錢會自動算好。按「用 LINE 送出預約」，訊息會直接帶進我們的 LINE 官方帳號。</p>
+    </div>
+    <div class="bk-tabs reveal" role="tablist">
+      <button type="button" class="on" data-mode="stay" role="tab" aria-selected="true">民宿住宿</button>
+      <button type="button" data-mode="lounge" role="tab" aria-selected="false">共享客廳</button>
+    </div>
+    <div class="bk-grid reveal">
+      <div class="cal">
+        <p class="cal-hint" id="bk-hint">請選擇入住日期</p>
+        <div class="cal-head">
+          <button type="button" id="bk-prev" aria-label="上個月">‹</button>
+          <b id="bk-month"></b>
+          <button type="button" id="bk-next" aria-label="下個月">›</button>
+        </div>
+        <div class="cal-grid" id="bk-cal"></div>
+        <div class="cal-legend">
+          <span style="--c:var(--accent)">已選擇</span>
+          <span style="--c:#f3c98f">週五～週日</span>
+          <span style="--c:#ff9b8a">連假・春節價</span>
+          <span style="--c:repeating-linear-gradient(135deg,#8b90ab 0 2px,transparent 2px 4px)">已訂滿</span>
+        </div>
+      </div>
+      <div class="bk-panel">
+        <div class="bk-fields" data-for="stay">
+          <label for="bk-room">平日房型（週五～週日與連假一律整棟包棟）
+            <select id="bk-room">
+              <option value="whole">全開包棟（四間房・最多 12 人）</option>
+              <option value="double">2F 雙人房包棟（2 人）</option>
+              <option value="quad">2F 四人房包棟（4 人）</option>
+              <option value="family">3F 家庭房包棟（6 人）</option>
+            </select>
+          </label>
+        </div>
+        <div class="bk-fields" data-for="lounge" hidden>
+          <label for="bk-slot">時段
+            <select id="bk-slot">
+              <option value="d3">日間 3 小時</option>
+              <option value="d5">日間 5 小時</option>
+              <option value="n8">夜間 8 小時（當天 00:00–08:00）</option>
+            </select>
+          </label>
+          <div class="bk-two">
+            <label for="bk-time" id="bk-time-wrap">開始時間<input type="time" id="bk-time" value="14:00" step="1800"></label>
+            <label for="bk-extra">加時（小時）<input type="number" id="bk-extra" min="0" max="8" value="0" inputmode="numeric"></label>
+          </div>
+          <label class="chk" for="bk-kitchen"><input type="checkbox" id="bk-kitchen">使用廚房（+$200 清潔費）</label>
+        </div>
+        <label for="bk-guests">人數<input type="number" id="bk-guests" min="1" max="16" value="2" inputmode="numeric"></label>
+        <label for="bk-note">備註<textarea id="bk-note" rows="2" placeholder="預計抵達時間、有小朋友同行、想租底片相機…"></textarea></label>
+        <div class="bk-sum" id="bk-sum"></div>
+        <div class="bk-total"><span>預估總價</span><b id="bk-total">—</b></div>
+        <p class="bk-msg" id="bk-msg" role="status"></p>
+        <div class="bk-actions">
+          <a class="btn line" id="bk-line" href="#" target="_blank" rel="noopener" aria-disabled="true">用 LINE 送出預約</a>
+          <button type="button" class="btn" id="bk-copy">複製預約訊息</button>
+        </div>
+        <p class="bk-fine">送出後我們會在 LINE 回覆是否有空房，並提供訂金轉帳資訊，收到訂金才算預約完成。金額僅供參考，以 LINE 確認為準。</p>
+      </div>
+    </div>
+    <div class="book-ways reveal" style="margin:40px 0 0">
+      <a class="btn" href="tel:0938917823">撥打 0938 917 823</a>
+      <a class="btn" href="https://www.booking.com/hotel/tw/jiao-xi-ye-shi.zh-tw.html" target="_blank" rel="noopener">Booking.com 訂房</a>
+    </div>
+    <p class="note">此住宿不接受派對、單身派對與群聚打牌等聚會，敬請見諒。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <img class="logo-img" src="images/logo.png" alt="礁溪夜室 Night Room">
+      <p>宜蘭礁溪的包棟民宿・共享客廳<br>民宿登記編號 2491｜府旅觀字第 1120097283 號</p>
+    </div>
+    <div>
+      <h4>聯絡我們</h4>
+      <p>電話：<a href="tel:0938917823">0938 917 823</a><br>Email：<a href="mailto:yeshotel0920@gmail.com">yeshotel0920@gmail.com</a><br>LINE：<a href="https://lin.ee/mOt0Cro" target="_blank" rel="noopener">官方帳號</a></p>
+    </div>
+    <div>
+      <h4>追蹤我們</h4>
+      <p><a href="https://www.facebook.com/yeshotel0902" target="_blank" rel="noopener">Facebook</a><br><a href="https://www.instagram.com/yeshotel0902/" target="_blank" rel="noopener">Instagram</a><br><a href="https://www.booking.com/hotel/tw/jiao-xi-ye-shi.zh-tw.html" target="_blank" rel="noopener">Booking.com</a></p>
+    </div>
+  </div>
+  <div class="wrap copy">© <span id="year"></span> 礁溪夜室. All rights reserved.</div>
+</footer>
+
+<script src="booking-data.js"></script>
+<script>
+  // 導覽列捲動變色
+  const header = document.getElementById("top");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 60);
+  window.addEventListener("scroll", onScroll); onScroll();
+
+  // 手機選單
+  const menu = document.querySelector(".menu");
+  document.querySelector(".burger").addEventListener("click", () => menu.classList.toggle("open"));
+  menu.querySelectorAll("a").forEach(a => a.addEventListener("click", () => menu.classList.remove("open")));
+
+  // 進場動畫
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+  }), { threshold: 0.15 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+  // ===== 預約月曆（日期設定在 booking-data.js） =====
+  (function () {
+    const cfg = window.NR_BOOKING || {};
+    const BOOKED = new Set(cfg.booked || []), HOL = new Set(cfg.holidays || []), SPRING = new Set(cfg.spring || []);
+    const LINE_ID = cfg.lineId || "@993dugqk";
+    const ROOMS = {
+      whole:  { name: "全開包棟（四間房）", price: 11500, cap: 12 },
+      double: { name: "2F 雙人房包棟", price: 2000, cap: 2 },
+      quad:   { name: "2F 四人房包棟", price: 4000, cap: 4 },
+      family: { name: "3F 家庭房包棟", price: 5500, cap: 6 }
+    };
+    const WHOLE_CAP = 12;
+    // 共享客廳：[平日價, 假日價, 時數, 名稱]
+    const SLOTS = { d3: [280, 320, 3, "日間 3 小時"], d5: [360, 400, 5, "日間 5 小時"], n8: [520, 560, 8, "夜間 8 小時"] };
+    const WD = "日一二三四五六";
+
+    const $ = id => document.getElementById(id);
+    const pad = n => String(n).padStart(2, "0");
+    const key = d => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const fmt = d => `${d.getMonth() + 1}/${d.getDate()}（${WD[d.getDay()]}）`;
+    const fmtY = d => `${d.getFullYear()}/${pad(d.getMonth() + 1)}/${pad(d.getDate())}（${WD[d.getDay()]}）`;
+    const money = n => "$" + n.toLocaleString("en-US");
+    const short = n => (n % 1000 ? (n / 1000).toFixed(1) : n / 1000) + "k";
+    const addDays = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+    const isWeekend = d => [0, 5, 6].includes(d.getDay());
+
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const lastDay = new Date(2027, 11, 31);
+    let mode = "stay", view = new Date(today.getFullYear(), today.getMonth(), 1);
+    let start = null, end = null, day = null;
+
+    // 某一晚的住宿價格
+    function night(d, roomKey, springPrice) {
+      const k = key(d), dow = d.getDay();
+      if (SPRING.has(k)) return { price: springPrice, label: "春節整棟", whole: true };
+      if (HOL.has(k)) return { price: 15000, label: "連假整棟", whole: true };
+      if (dow === 6) return { price: 14000, label: "假日整棟", whole: true };
+      if (dow === 5 || dow === 0) return { price: 13000, label: "小假日整棟", whole: true };
+      return { price: ROOMS[roomKey].price, label: "平日・" + ROOMS[roomKey].name, whole: false };
+    }
+
+    function renderCal() {
+      const y = view.getFullYear(), m = view.getMonth();
+      $("bk-month").textContent = `${y} 年 ${m + 1} 月`;
+      $("bk-prev").disabled = y === today.getFullYear() && m === today.getMonth();
+      $("bk-next").disabled = y === lastDay.getFullYear() && m === lastDay.getMonth();
+      const roomKey = $("bk-room").value;
+      let html = [..."日一二三四五六"].map(w => `<div class="cal-dow">${w}</div>`).join("");
+      const first = new Date(y, m, 1).getDay(), days = new Date(y, m + 1, 0).getDate();
+      for (let i = 0; i < first; i++) html += `<div class="day empty"></div>`;
+      for (let n = 1; n <= days; n++) {
+        const d = new Date(y, m, n), k = key(d);
+        const off = d < today || d > lastDay, booked = BOOKED.has(k);
+        const cls = ["day"];
+        if (isWeekend(d)) cls.push("wkend");
+        if (HOL.has(k) || SPRING.has(k)) cls.push("hol");
+        if (booked) cls.push("booked");
+        if (mode === "stay") {
+          if ((start && +d === +start) || (end && +d === +end)) cls.push("sel");
+          else if (start && end && d > start && d < end) cls.push("in");
+        } else if (day && +d === +day) cls.push("sel");
+        let p = "";
+        if (booked) p = "滿";
+        else if (mode === "stay") p = short(night(d, roomKey, 21000).price);
+        else p = isWeekend(d) ? "假日" : "平日";
+        html += `<button type="button" class="${cls.join(" ")}" data-k="${k}" ${off ? "disabled" : ""} aria-label="${fmtY(d)}${booked ? " 已訂滿" : ""}"><span class="n">${n}</span><span class="p">${p}</span></button>`;
+      }
+      $("bk-cal").innerHTML = html;
+    }
+
+    function pick(k) {
+      const [y, mo, dd] = k.split("-").map(Number), d = new Date(y, mo - 1, dd);
+      $("bk-msg").textContent = "";
+      if (mode === "lounge") {
+        if (BOOKED.has(k)) { $("bk-msg").textContent = "這天已經有客人預約，請換一天。"; return; }
+        day = d;
+      } else if (!start || end || d <= start) {
+        if (BOOKED.has(k)) { $("bk-msg").textContent = "這晚已訂滿，請選其他入住日期。"; return; }
+        start = d; end = null;
+      } else {
+        for (let x = start; x < d; x = addDays(x, 1)) {
+          if (BOOKED.has(key(x))) { $("bk-msg").textContent = `${fmt(x)} 已訂滿，請縮短住宿天數或換日期。`; return; }
+        }
+        end = d;
+      }
+      update();
+    }
+
+    // 計算金額，並產生要傳到 LINE 的訊息
+    function quote() {
+      const guests = parseInt($("bk-guests").value, 10) || 0;
+      const note = $("bk-note").value.trim();
+      const rows = [], lines = [];
+      let total = 0, err = "";
+      if (mode === "stay") {
+        if (!start) return { hint: "請選擇入住日期" };
+        if (!end) return { hint: "請選擇退房日期" };
+        const roomKey = $("bk-room").value, nights = [];
+        for (let x = start; x < end; x = addDays(x, 1)) nights.push(x);
+        const springN = nights.filter(x => SPRING.has(key(x))).length;
+        const springPrice = springN >= 3 ? 19000 : springN === 2 ? 20000 : 21000;
+        nights.forEach(x => {
+          const nt = night(x, roomKey, springPrice);
+          let extra = 0;
+          const cap = nt.whole ? WHOLE_CAP : ROOMS[roomKey].cap;
+          if (guests > cap) extra = (guests - cap) * (nt.whole ? 800 : 500);
+          total += nt.price + extra;
+          rows.push([`${fmt(x)} ${nt.label}`, money(nt.price)]);
+          if (extra) rows.push([`　加 ${guests - cap} 人`, money(extra)]);
+          lines.push(`・${fmt(x)} ${nt.label} ${money(nt.price)}${extra ? `＋加人 ${money(extra)}` : ""}`);
+        });
+        if (guests < 1) err = "請填寫人數。";
+        else if (guests > 16) err = "人數最多 16 人，更多人請直接 LINE 詢問。";
+        const hasWeekday = nights.some(x => !night(x, roomKey, 0).whole);
+        const head = `【夜室 民宿預約】\n入住：${fmtY(start)}\n退房：${fmtY(end)}（共 ${nights.length} 晚）\n${hasWeekday ? `平日房型：${ROOMS[roomKey].name}` : "房型：整棟包棟"}\n人數：${guests} 人`;
+        return { hint: `${fmt(start)} 入住 → ${fmt(end)} 退房，共 ${nights.length} 晚`, rows, total, err,
+          text: `${head}\n預估金額：${money(total)}\n明細：\n${lines.join("\n")}${note ? `\n備註：${note}` : ""}` };
+      }
+      if (!day) return { hint: "請選擇使用日期" };
+      const [wkday, wkend, hrs, name] = SLOTS[$("bk-slot").value];
+      const we = isWeekend(day), price = we ? wkend : wkday, minP = we ? 4 : 2;
+      const extraH = Math.max(0, parseInt($("bk-extra").value, 10) || 0);
+      const kitchen = $("bk-kitchen").checked;
+      const night8 = $("bk-slot").value === "n8";
+      const t = $("bk-time").value || "14:00", startH = parseInt(t, 10) + (parseInt(t.slice(3), 10) || 0) / 60;
+      if (!night8 && (startH < 8 || startH + hrs + extraH > 24)) err = "日間時段為 08:00–24:00，請調整開始時間或加時。";
+      if (guests < 1) err = "請填寫人數。";
+      else if (guests > 12) err = "共享客廳最多 12 人，更多人請直接 LINE 詢問。";
+      const charged = Math.max(guests, minP);
+      total = (price + extraH * 50) * charged + (kitchen ? 200 : 0);
+      rows.push([`${name}（${we ? "假日" : "平日"}）`, `${money(price)} × ${charged} 人`]);
+      if (extraH) rows.push([`加時 ${extraH} 小時`, `${money(50 * extraH)} × ${charged} 人`]);
+      if (kitchen) rows.push(["廚房清潔費", money(200)]);
+      if (guests < minP) rows.push([`低消 ${minP} 人，以 ${minP} 人計`, ""]);
+      const time = night8 ? "00:00–08:00" : `${t} 開始`;
+      return { hint: `${fmtY(day)} ${name}`, rows, total, err,
+        text: `【夜室 共享客廳預約】\n日期：${fmtY(day)}\n時段：${name}（${time}）${extraH ? `\n加時：${extraH} 小時` : ""}\n人數：${guests} 人${kitchen ? "\n使用廚房：是" : ""}\n預估金額：${money(total)}${note ? `\n備註：${note}` : ""}` };
+    }
+
+    let current = null;
+    function update() {
+      renderCal();
+      const q = quote();
+      current = q.text && !q.err ? q : null;
+      $("bk-hint").textContent = q.hint;
+      $("bk-sum").innerHTML = (q.rows || []).map(r => `<div class="row"><span>${r[0]}</span><span>${r[1]}</span></div>`).join("");
+      $("bk-total").textContent = q.text ? money(q.total) : "—";
+      if (q.err) $("bk-msg").textContent = q.err;
+      else if (q.text) $("bk-msg").textContent = "";
+      const btn = $("bk-line");
+      btn.setAttribute("aria-disabled", current ? "false" : "true");
+      btn.href = current ? `https://line.me/R/oaMessage/${encodeURIComponent(LINE_ID)}/?${encodeURIComponent(current.text)}` : "#";
+      $("bk-time-wrap").hidden = $("bk-slot").value === "n8";
+    }
+
+    document.querySelectorAll(".bk-tabs button").forEach(b => b.addEventListener("click", () => {
+      mode = b.dataset.mode;
+      document.querySelectorAll(".bk-tabs button").forEach(x => { x.classList.toggle("on", x === b); x.setAttribute("aria-selected", x === b); });
+      document.querySelectorAll(".bk-fields").forEach(f => { f.hidden = f.dataset.for !== mode; });
+      $("bk-msg").textContent = "";
+      update();
+    }));
+    $("bk-cal").addEventListener("click", e => { const b = e.target.closest(".day"); if (b && !b.disabled) pick(b.dataset.k); });
+    $("bk-prev").addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth() - 1, 1); renderCal(); });
+    $("bk-next").addEventListener("click", () => { view = new Date(view.getFullYear(), view.getMonth() + 1, 1); renderCal(); });
+    ["bk-room", "bk-slot", "bk-time", "bk-extra", "bk-kitchen", "bk-guests", "bk-note"].forEach(id => $(id).addEventListener("input", update));
+    $("bk-copy").addEventListener("click", () => {
+      if (!current) { $("bk-msg").textContent = "請先選好日期和人數。"; return; }
+      const done = () => { $("bk-msg").textContent = ""; $("bk-copy").textContent = "已複製，可以貼到 LINE"; setTimeout(() => { $("bk-copy").textContent = "複製預約訊息"; }, 2500); };
+      const fallback = () => { const t = document.createElement("textarea"); t.value = current.text; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); done(); } catch (_) { $("bk-msg").textContent = "無法自動複製，請手動複製。"; } t.remove(); };
+      if (navigator.clipboard) navigator.clipboard.writeText(current.text).then(done, fallback); else fallback();
+    });
+    update();
+  })();
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body></html>
