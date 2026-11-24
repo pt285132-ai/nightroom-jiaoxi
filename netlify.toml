@@ -1,2 +1,9 @@
 [build]
   publish = "."
+
+# 正式網站在 Cloudflare（含後台與 Booking 同步），這裡全部轉過去
+[[redirects]]
+  from = "/*"
+  to = "https://nightroom-jiaoxi.pages.dev/:splat"
+  status = 301
+  force = true
