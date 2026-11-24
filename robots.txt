@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nightroom-jiaoxi.netlify.app/sitemap.xml
